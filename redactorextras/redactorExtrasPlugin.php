@@ -71,6 +71,9 @@ class redactorExtrasPlugin extends BasePlugin
             'fontfamily' => array(
                 AttributeType::Bool, 'default' => false
             ),
+            'fontsize' => array(
+                AttributeType::Bool, 'default' => false
+            ),
             'extraPluginJs'      => AttributeType::String,
             'extraPluginCss'      => AttributeType::String,
         );
@@ -131,6 +134,10 @@ class redactorExtrasPlugin extends BasePlugin
                 craft()->templates->includeJsResource('redactorextras/plugins/fontfamily.js');
             }
 
+            if($settings->fontsize === "1")
+            {
+                craft()->templates->includeJsResource('redactorextras/plugins/fontsize.js');
+            }
             if($settings->extraPluginJs != "")
             {
                 craft()->templates->includeJsFile($settings->extraPluginJs);

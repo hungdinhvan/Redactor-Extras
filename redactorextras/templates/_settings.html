@@ -83,6 +83,17 @@
 	first:        true,
 	errors:       settings.getErrors('fontcolor')
 }) }}
+
+{{ forms.lightswitchField({
+	label:        "Font Size"|t,
+	id:           "fontsize",
+	name:         "fontsize",
+	instructions: "Set size of text. <code class=\"inlinecode\">'fontsize'</code>"|t,
+	on:           settings.fontsize,
+	first:        true,
+	errors:       settings.getErrors('fontsize')
+}) }}
+
 {{ forms.lightswitchField({
 	label:        "Font Family"|t,
 	id:           "fontfamily",
