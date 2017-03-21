@@ -75,6 +75,25 @@
 }) }}
 
 {{ forms.lightswitchField({
+	label:        "Font Color"|t,
+	id:           "fontcolor",
+	name:         "fontcolor",
+	instructions: "Set color of text. <code class=\"inlinecode\">'fontcolor'</code>"|t,
+	on:           settings.fontcolor,
+	first:        true,
+	errors:       settings.getErrors('fontcolor')
+}) }}
+{{ forms.lightswitchField({
+	label:        "Font Family"|t,
+	id:           "fontfamily",
+	name:         "fontfamily",
+	instructions: "Set font family of text. <code class=\"inlinecode\">'fontfamily'</code>"|t,
+	on:           settings.fontfamily,
+	first:        true,
+	errors:       settings.getErrors('fontfamily')
+}) }}
+
+{{ forms.lightswitchField({
 	label:        "Properties"|t,
 	id:           "properties",
 	name:         "properties",

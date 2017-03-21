@@ -11,22 +11,22 @@ class redactorExtrasPlugin extends BasePlugin
 
     function getVersion()
     {
-        return '1.3.2';
+        return '1.3.3';
     }
 
     function getDeveloper()
     {
-        return 'Elliot Lewis';
+        return 'ITC Team';
     }
 
     function getDeveloperUrl()
     {
-        return 'http://elliotlewis.co.uk/craft';
+        return 'https://www.it-s.vn';
     }
 
     public function getPluginUrl()
     {
-        return 'https://github.com/elliotlewis/Redactor-Extras';
+        return 'https://github.com/hungdinhvan/Redactor-Extras';
     }
 
     public function getDocumentationUrl()
@@ -36,14 +36,14 @@ class redactorExtrasPlugin extends BasePlugin
 
     public function getReleaseFeedUrl()
     {
-        return 'https://raw.githubusercontent.com/elliotlewis/Redactor-Extras/master/changelog.json';
+        return 'https://github.com/hungdinhvan/Redactor-Extras/blob/master/changelog.json';
     }
-    
+
     public function getSourceLanguage()
     {
         return 'en';
     }
-    
+
     protected function defineSettings()
     {
         return array(
@@ -65,18 +65,24 @@ class redactorExtrasPlugin extends BasePlugin
             'limiter' => array(
                 AttributeType::Bool, 'default' => false
             ),
+            'fontcolor' => array(
+                AttributeType::Bool, 'default' => false
+            ),
+            'fontfamily' => array(
+                AttributeType::Bool, 'default' => false
+            ),
             'extraPluginJs'      => AttributeType::String,
             'extraPluginCss'      => AttributeType::String,
         );
     }
-    
+
     public function getSettingsHtml()
     {
         return craft()->templates->render('redactorextras/_settings', array(
             'settings' => $this->getSettings()
         ));
     }
-    
+
     public function init()
 	{
 		if (craft()->request->isCpRequest())
@@ -99,12 +105,12 @@ class redactorExtrasPlugin extends BasePlugin
                 craft()->templates->includeJsResource('redactorextras/plugins/alignment.js');
                 craft()->templates->includeCssResource('redactorextras/plugins/alignment.css');
             }
-            
+
             if($settings->properties === "1")
             {
                 craft()->templates->includeJsResource('redactorextras/plugins/properties.js');
             }
-            
+
             if($settings->definedlinks === "1")
             {
                 craft()->templates->includeJsResource('redactorextras/plugins/definedlinks.js');
@@ -114,7 +120,17 @@ class redactorExtrasPlugin extends BasePlugin
             {
                 craft()->templates->includeJsResource('redactorextras/plugins/limiter.js');
             }
-            
+
+            if($settings->fontcolor === "1")
+            {
+                craft()->templates->includeJsResource('redactorextras/plugins/fontcolor.js');
+            }
+
+            if($settings->fontfamily === "1")
+            {
+                craft()->templates->includeJsResource('redactorextras/plugins/fontfamily.js');
+            }
+
             if($settings->extraPluginJs != "")
             {
                 craft()->templates->includeJsFile($settings->extraPluginJs);
